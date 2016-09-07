@@ -790,7 +790,7 @@ class UserDetailView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         pk = self.kwargs['pk']
-        user = models.User.objects.get(pk=pk)
+        user = get_object_or_404(models.User, pk=pk)
         context['current_user'] = user
         #context['comments'] = user.comments.get_available()
         return context
